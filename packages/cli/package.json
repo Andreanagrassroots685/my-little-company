@@ -8,6 +8,15 @@
     "build": "tsc",
     "dev": "tsc --watch"
   },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "targets": [
+      "node18-macos-arm64",
+      "node18-linux-x64",
+      "node18-win-x64"
+    ],
+    "outputPath": "../../bin"
+  },
   "dependencies": {
     "@mlc/core": "*",
     "chalk": "^5.3.0",

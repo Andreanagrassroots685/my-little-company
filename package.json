@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
+    "build:binary": "npm run build && pkg packages/cli/dist/index.js --config packages/cli/package.json --out-path bin && mv bin/@mlc/cli-macos-arm64 bin/mlc-macos-arm64 && mv bin/@mlc/cli-linux-x64 bin/mlc-linux-x64 && mv bin/@mlc/cli-win-x64.exe bin/mlc-win-x64.exe && rm -r bin/@mlc",
     "dev": "npm run dev --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "test": "vitest run",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "pkg": "^5.8.1",
     "@vitest/coverage-v8": "^4.1.0",
     "typescript": "^5.4.0",
     "vitest": "^4.1.0"

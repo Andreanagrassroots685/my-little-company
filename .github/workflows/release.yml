@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build binaries
+        run: npm run build:binary
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          body: |
+            ## 설치 방법
+
+            ### macOS (Apple Silicon)
+            ```bash
+            curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/mlc-macos-arm64 -o /usr/local/bin/mlc
+            chmod +x /usr/local/bin/mlc
+            ```
+
+            ### Linux (x64)
+            ```bash
+            curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/mlc-linux-x64 -o /usr/local/bin/mlc
+            chmod +x /usr/local/bin/mlc
+            ```
+
+            ### Windows (x64)
+            `mlc-win-x64.exe` 를 다운받아 원하는 경로에 저장 후 PATH에 추가하세요.
+          files: |
+            bin/mlc-macos-arm64
+            bin/mlc-linux-x64
+            bin/mlc-win-x64.exe
